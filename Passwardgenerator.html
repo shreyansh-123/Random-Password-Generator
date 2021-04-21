@@ -1,0 +1,75 @@
+<html>
+    <head>
+    <body>
+        <input type="number" placeholder="Enter Your Password Length" id="input">
+        
+        <div id="div">
+        Do you want to include Special Characters?<br>
+            <form id="main" >
+            Yes<input type="radio" id="radio1" name="radio" value="yes">
+            No<input type="radio" id="radio2" name="radio" value="no">
+                </form>
+        </div>
+        <div style="display: none" id="checkbox">
+            This will <span>Double</span> your password length<input type="checkbox" id="check">
+       </div><br>
+<button onclick="run()" type="submit">Generate</button>
+        <p id="p"></p>
+        
+        </body>
+    </head>
+    <script>
+    const Input = document.getElementById('input');
+    const p = document.getElementById('p');
+    const check = document.getElementById('check');
+    const div = document.getElementById('div');
+    const checkbox = document.getElementById('checkbox');
+        
+        
+            
+        function run() {     
+            const radio = document.getElementsByName('radio');
+            for(let i=0;i<radio.length;i++)
+                {
+                    if(radio[i].checked){
+                    if(radio[i].value == 'yes')
+                        {
+                            checkbox.style.display = 'block';
+                            if(check.checked == true)
+            {
+                var pass = '';
+            var char = 'abcdefghijklmnopqrstuvwxyz';
+            var schar = '@#$%&!';
+                            for(let i=0;i<Input.value;i++){
+                 var generate = Math.floor(Math.random(Input.value)*char.length);
+            pass +=    char.charAt(generate);
+                p.innerHTML = pass;
+                            }
+        }
+                            for(let i=0;i<Input.value;i++) {
+       var generate = Math.floor(Math.random(Input.value)*schar.length);
+          //console.log(generate);
+            pass += schar.charAt(generate);
+                p.innerHTML = pass;
+            }
+                        }
+                        else
+                            {
+             checkbox.style.display = 'none';
+            var pass = '';
+            var char = 'abcdefghijklmnopqrstuvwxyz';
+            var schar = '@#$%&!';
+            
+            for(let i=0;i<Input.value;i++) {
+       var generate = Math.floor(Math.random(Input.value)*char.length);
+          //console.log(generate);
+            pass += char.charAt(generate);
+                p.innerHTML = pass;
+            }
+                            }
+                    }
+                }
+        }
+               
+    </script>
+</html>
